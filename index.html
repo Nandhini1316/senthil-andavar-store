@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Senthil Andavar Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>SENTHIL ANDAVAR STORE <span class="cart-emoji">🛒</span></h1>
+      <p>Fresh groceries delivered to your home</p>
+
+      <div class="hero-actions">
+        <button class="primary" onclick="scrollToProducts()">Shop Now</button>
+        <button class="ghost" onclick="scrollToCart()">Go to Cart</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#products">Products</a>
+    <a href="#categories">Categories</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+
+    <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Dark</button>
+
+    <a class="cart-link" href="#cart">
+      Cart <span id="cart-count">0</span>
+    </a>
+  </nav>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="section">
+    <h2 class="section-title">Popular Products</h2>
+
+    <div class="controls">
+      <input id="search" type="text" placeholder="Search products (milk, rice, tomato...)" />
+
+      <div class="cat-buttons">
+        <button class="cat-btn active" onclick="setCategory('all')" data-cat="all">All</button>
+        <button class="cat-btn" onclick="setCategory('fruits')" data-cat="fruits">Fruits</button>
+        <button class="cat-btn" onclick="setCategory('vegetables')" data-cat="vegetables">Vegetables</button>
+        <button class="cat-btn" onclick="setCategory('dairy')" data-cat="dairy">Dairy</button>
+        <button class="cat-btn" onclick="setCategory('grocery')" data-cat="grocery">Grocery</button>
+        <button class="cat-btn" onclick="setCategory('snacks')" data-cat="snacks">Snacks</button>
+      </div>
+    </div>
+
+    <div class="product-grid" id="product-grid"></div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="categories" class="section soft">
+    <h2 class="section-title">What We Sell</h2>
+    <p class="section-subtitle">Click any category below to instantly filter products.</p>
+
+    <div class="category-cards">
+      <div class="category-card" onclick="setCategory('dairy')">
+        <h3>🥛 Dairy</h3>
+        <p>Milk, Curd, Butter, Paneer</p>
+      </div>
+
+      <div class="category-card" onclick="setCategory('vegetables')">
+        <h3>🥕 Vegetables</h3>
+        <p>Tomato, Onion, Potato, Carrot</p>
+      </div>
+
+      <div class="category-card" onclick="setCategory('fruits')">
+        <h3>🍎 Fruits</h3>
+        <p>Apple, Banana, Orange, Grapes</p>
+      </div>
+
+      <div class="category-card" onclick="setCategory('grocery')">
+        <h3>🌾 Grocery</h3>
+        <p>Rice, Sugar, Dal, Oil</p>
+      </div>
+
+      <div class="category-card" onclick="setCategory('snacks')">
+        <h3>🍪 Snacks</h3>
+        <p>Biscuits, Chips, Noodles</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART -->
+  <section id="cart" class="section">
+    <h2 class="section-title">Your Cart</h2>
+
+    <div class="cart-box">
+      <ul id="cart-items"></ul>
+
+      <div class="cart-summary">
+        <h3 id="total-price">Total: ₹0</h3>
+        <p class="mini">Delivery charges: ₹<span id="delivery">0</span></p>
+        <p class="mini strong">Final Total: ₹<span id="final-total">0</span></p>
+
+        <hr class="line">
+
+        <div class="order-form">
+          <h3 class="mini strong">Customer Details</h3>
+          <input id="cust-name" type="text" placeholder="Customer Name" />
+          <input id="cust-phone" type="text" placeholder="Phone Number (10 digits)" />
+          <textarea id="cust-address" placeholder="Delivery Address"></textarea>
+
+          <button class="primary" onclick="placeOrder()">Place Order & Generate Invoice</button>
+        </div>
+
+        <div class="cart-actions">
+          <button class="danger" onclick="clearCart()">Clear Cart</button>
+
+          <a id="whatsapp-link" target="_blank">
+            <button class="whatsapp">Send Order on WhatsApp</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVOICE -->
+  <section id="invoice" class="section soft">
+    <h2 class="section-title">Invoice</h2>
+    <div id="invoice-box" class="about-box">
+      <p class="mini">No invoice generated yet. Place an order to see invoice.</p>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section id="history" class="section">
+    <h2 class="section-title">Order History</h2>
+    <div id="history-box" class="contact-box">
+      <p class="mini">No orders yet.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section soft">
+    <h2 class="section-title">About Our Store</h2>
+    <div class="about-box">
+      <p>
+        Senthil Andavar Store is a local grocery store in Coimbatore. This website is built using
+        HTML, CSS, and JavaScript with features like search, category filtering, cart quantity,
+        WhatsApp ordering, order history, invoice generation, and dark mode.
+      </p>
+
+      <ul class="about-list">
+        <li>✅ Dynamic products using JavaScript</li>
+        <li>✅ Search + Category filtering</li>
+        <li>✅ Cart with quantity controls</li>
+        <li>✅ Customer details form</li>
+        <li>✅ Invoice + Order history</li>
+        <li>✅ WhatsApp ordering</li>
+        <li>✅ Dark mode + responsive UI</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-box">
+      <p>📍 Coimbatore</p>
+      <p>📞 +91 7904225523</p>
+      <p>📧 senthilstore@gmail.com</p>
+      <p class="mini">Open: 7 AM – 10 PM (All days)</p>
+    </div>
+  </section>
+
+  <div id="toast"></div>
+
+  <footer class="footer">
+    <p>© 2026 Senthil Andavar Store | Built by Nandhini</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
